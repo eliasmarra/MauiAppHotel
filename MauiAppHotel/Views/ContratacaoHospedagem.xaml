@@ -7,7 +7,7 @@
 
     <ContentPage.Resources>
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="#FFFDD0" />
+            <Setter Property="BackgroundColor" Value="#0F172A" />
         </Style>
     </ContentPage.Resources>
 
@@ -21,10 +21,10 @@
                FontFamily="Kalam"
                FontSize="50"
                HorizontalTextAlignment="Center"
-               TextColor="{StaticResource Primary}" />
+               TextColor="#111827" />
 
         <Border Grid.Row="1" Padding="10"
-                BackgroundColor="#FFFDD0"
+                BackgroundColor="#E0D4C6"
                 StrokeShape="RoundRectangle 10">
             <VerticalStackLayout>
 
@@ -35,7 +35,7 @@
                            Text="👨‍🦰 Adultos:" />
 
                     <Label Grid.Row="0" Grid.Column="1"
-                           TextColor="{StaticResource Primary}"
+                           TextColor="#0F172A"
                            Text="{Binding Value}"
                            BindingContext="{x:Reference stp_adultos}"/>
 
@@ -50,7 +50,7 @@
                            Text="🧒 Crianças:" />
 
                     <Label Grid.Row="1" Grid.Column="1"
-                           TextColor="{StaticResource Primary}"
+                           TextColor="#0F172A"
                            Text="{Binding Value}"
                            BindingContext="{x:Reference stp_criancas}"/>
 
@@ -68,10 +68,11 @@
                         <Label Text="🛏️ Escolha sua Suíte"
                                TextTransform="Uppercase"
                                FontSize="Subtitle"
-                               TextColor="{StaticResource Primary}"/>
+                               TextColor="#1F2937"/>
 
                         <Picker x:Name="pck_quarto"
-                                Title="Selecione sua Acomodação 🏡" />
+                                ItemDisplayBinding="{Binding Descricao}"
+                                Title="🏡Selecione sua Acomodação " />
                     </VerticalStackLayout>
                 </Border>
 
@@ -82,12 +83,13 @@
                         <Label Text="📅 Período da Estadia"
                                TextTransform="Uppercase"
                                FontSize="Subtitle"
-                               TextColor="{StaticResource Primary}"/>
+                               TextColor="#1F2937"/>
 
                         <Grid ColumnDefinitions="Auto, Auto"
                               HorizontalOptions="Center">
                             <Label Grid.Column="0" Text="Check-in:" />
                             <DatePicker Grid.Column="1" x:Name="dtpck_checkin"
+                                        DateSelected="dtpck_checkin_DateSelected"
                                         Format="dd/MM/yyyy" />
                         </Grid>
 
@@ -100,9 +102,9 @@
                     </VerticalStackLayout>
                 </Border>
 
-                <Button Text="Avançar " />
+                <Button Text="Avançar" Clicked="Button_Clicked" />
 
-                <Button Text="Sobre ℹ️"
+                <Button Text="ℹ️Sobre "
                         BackgroundColor="Green"
                         TextColor="White"
                         Clicked="AbrirSobre"/>
