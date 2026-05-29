@@ -7,9 +7,19 @@
     xmlns:Views="clr-namespace:MauiAppHotel.Views"
     Title="MauiAppHotel">
 
-    <ShellContent
-        Title="Home"
+    <FlyoutItem Title="Hotel">
+        <ShellContent
+        Title="Hospedagem"
         ContentTemplate="{DataTemplate Views:ContratacaoHospedagem}"
-        Route="MainPage" />
+        />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Eventos">
+        <ShellContent
+      Title="Cadastro de Evento"
+      ContentTemplate="{DataTemplate Views:CadastroEvento}"
+      />
+    </FlyoutItem>
+
 
 </Shell>
