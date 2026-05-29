@@ -1,5 +1,5 @@
 using System;
-
+using MauiAppHotel.Models;
 using Microsoft.Maui.Controls;
 
 namespace MauiAppHotel.Views
@@ -16,13 +16,13 @@ namespace MauiAppHotel.Views
             dtpck_checkin.MaximumDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month + 1, DateTime.Now.Day);
 
             dtpck_checkout.MinimumDate = dtpck_checkin.Date?.AddDays(1);
-            dtpck_checkin.MaximumDate = dtpck_checkin.Date?.AddMonths(4);
+            dtpck_checkin.MaximumDate = dtpck_checkin.Date?.AddMonths(2);
 
         }
 
         private void dtpck_checkin_DateSelected(object sender, DateChangedEventArgs e)
         {
-           
+
 
             dtpck_checkin.MinimumDate = e.NewDate?.AddDays(1);
             dtpck_checkin.MaximumDate = e.NewDate?.AddMonths(4);
@@ -33,7 +33,20 @@ namespace MauiAppHotel.Views
         {
             try
             {
-                Navigation.PushAsync(new HospedagemContratada());
+                Hospedagem h = new()
+                {
+                    QntAdultos = Convert.ToInt32(stp_adultos.Value),
+                    QntCriancas = Convert.ToInt32(stp_criancas.Value),
+                    QuartoSelecionado = (Quarto)pck_quarto.SelectedItem,
+                    DataCheckIn = Convert.ToDateTime(dtpck_checkin.Date),
+                    DataCheckOut = Convert.ToDateTime(dtpck_checkout.Date)
+
+                };
+
+                Navigation.PushAsync(new HospedagemContratada()
+                {
+                    BindingContext = h
+                });
 
             }
             catch (Exception ex)
